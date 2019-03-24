@@ -5,7 +5,7 @@ const express           = require('express');
 
 const app               = express();
 
-const serverSource      = require('http').Server(app);
+const serverEntry      = require('http').Server(app);
 
 const bodyParser        = require('body-parser');
 
@@ -23,8 +23,6 @@ import routes from './routes';
 
 (function (list) {
     app.use((req, res, next) => {
-
-        console.log(req.url)
 
         if (list.indexOf(req.url.split('?')[0]) > -1) {
 
@@ -51,7 +49,7 @@ app.use(express.static(web, { // http://expressjs.com/en/resources/middleware/se
     }
 }));
 
-serverSource.listen(port, host, undefined, () => {
+serverEntry.listen(port, host, undefined, () => {
 
     console.log(`\n 🌎  Server is running ` + `${host}:${port}\n`)
 });

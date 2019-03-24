@@ -1,10 +1,14 @@
 
 import React, { Component } from 'react';
 
+import './Pos.scss';
+
 class Pos extends Component {
     render() {
         return (
-            <div>Pos.js</div>
+            <div className="pos">
+
+            </div>
         );
     }
 }

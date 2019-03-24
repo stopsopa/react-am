@@ -8,20 +8,11 @@ const path                  = require('path');
 // process.env.NODE_ENV = 'production';
 process.env.NODE_ENV = 'development';
 
+const node_modules = path.resolve('.', 'node_modules');
+
 const common = {
     // target: 'node',
     mode: process.env.NODE_ENV,
-    node: {
-        __filename: false, // https://webpack.js.org/configuration/node#node
-        __dirname: false, // no polyfill
-    },
-    entry: {
-        index: path.resolve(__dirname, 'entry.js')
-    },
-    output: {
-        path: __dirname,
-        filename: "bundle.js"
-    },
     devtool: false, // don't eval in bundle
     module: {
         rules: [
@@ -97,25 +88,63 @@ const common = {
             // },
         ]
     },
-    plugins: [
-        // new ExtractTextPlugin("es5.css"),
-        // new UglifyJSPlugin({
-        //     sourceMap: false,
-        //     parallel: true
-        // })
-    ]
+    // plugins: [
+    //     // new ExtractTextPlugin("es5.css"),
+    //     // new UglifyJSPlugin({
+    //     //     sourceMap: false,
+    //     //     parallel: true
+    //     // })
+    // ]
+};
+
+const web = {
+    ...common,
+    entry: {
+        index: path.resolve(__dirname, 'web-entry.js')
+    },
+    output: {
+        path: __dirname,
+        filename: "web.js"
+    },
+    module: {
+        rules: [
+            ...common.module.rules,
+            {
+                test: /\.scss$/,
+                use: [
+                    "style-loader", // creates style nodes from JS strings
+                    "css-loader", // translates CSS into CommonJS
+                    "sass-loader" // compiles Sass to CSS, using Node Sass by default
+                ]
+            }
+        ]
+    },
 };
 
 const server = {
     ...common,
     target: 'node',
+    node: {
+        __filename: false, // https://webpack.js.org/configuration/node#node
+        __dirname: false, // no polyfill
+    },
     entry: {
-        sever: path.resolve(__dirname, 'server-source.js')
+        sever: path.resolve(__dirname, 'server-entry.js')
     },
     output: {
         path: __dirname,
         filename: "server.js"
     },
+    module: {
+        rules: [
+            ...common.module.rules,
+            {
+                // https://webpack.js.org/loaders/style-loader/
+                test: /\.scss$/,
+                loader: path.resolve(node_modules, 'css-loader/locals')
+            }
+        ]
+    },
 };
 
-module.exports = [common, server];
+module.exports = [web, server];

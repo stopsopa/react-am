@@ -12,6 +12,8 @@ import {
 
 import routes from '../routes';
 
+import './Root.scss';
+
 class Root extends Component {
     render() {
         return (
