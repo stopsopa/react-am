@@ -24,7 +24,7 @@
         "inspc": "^0.0.16",
         "js-yaml": "^3.12.2",
         "lodash": "^4.17.11",
-        "nlab": "^0.0.47",
+        "nlab": "^0.0.48",
         "node-sass": "^4.11.0",
         "postcss-flexbugs-fixes": "^4.1.0",
         "postcss-loader": "^3.0.0",

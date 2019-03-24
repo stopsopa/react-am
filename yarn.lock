@@ -3660,10 +3660,10 @@ nice-try@^1.0.4:
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
 
-nlab@^0.0.47:
-  version "0.0.47"
-  resolved "https://registry.yarnpkg.com/nlab/-/nlab-0.0.47.tgz#44f7924688b03d1c01a13d3e4769dceb856887e2"
-  integrity sha512-URP+LkLdLDGGfjLhmiNj3gAxbhyLfG5xoTM9bqKtWyq03novZERv9JvFOzaL7VuUMzdRshclJUPTVXJtMflm3Q==
+nlab@^0.0.48:
+  version "0.0.48"
+  resolved "https://registry.yarnpkg.com/nlab/-/nlab-0.0.48.tgz#922adebac65100a90b31ae8199c824e3360b71f4"
+  integrity sha512-lcY/Y5z6yhbz+jTdjcd+/L3fmajGDbS9IZcqAsOuY91uUQEgbfknslHp1XA3s2AruZkbPcXOj6qWji0A/vb03w==
   dependencies:
     inspc "^0.0.16"
     md5 "^2.2.1"

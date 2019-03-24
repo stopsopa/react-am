@@ -1,4 +1,19 @@
 
+p {
+    cursor: default;
+}
+.mouse {
+    font-size: 11px;
+    font-family: monospace;
+    //border: 1px solid gray;
+    position: absolute;
+    background-color: #e6e600;
+    box-shadow: 0 0 4px black;
+    padding: 2px 5px;
+}
 .pos {
     border: 1px solid red;
+    .test {
+        border: 5px dashed lightgray;
+    }
 }

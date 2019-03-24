@@ -34,7 +34,7 @@ class Root extends Component {
                         const {label, ...rest} = routes[path];
 
                         return (
-                            <Route key={path} to={path} {...rest} />
+                            <Route key={path} path={path} {...rest} />
                         );
                     })}
                 </Switch>
