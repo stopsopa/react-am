@@ -1,0 +1,43 @@
+{
+    "name": "roderic-private",
+    "version": "1.0.0",
+    "dependencies": {
+        "@babel/core": "^7.1.6",
+        "@babel/plugin-proposal-async-generator-functions": "^7.1.0",
+        "@babel/plugin-proposal-class-properties": "^7.1.0",
+        "@babel/plugin-proposal-export-default-from": "^7.0.0",
+        "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+        "@babel/plugin-proposal-json-strings": "^7.0.0",
+        "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+        "@babel/plugin-transform-async-to-generator": "^7.1.0",
+        "@babel/plugin-transform-destructuring": "^7.1.3",
+        "@babel/polyfill": "^7.0.0",
+        "@babel/preset-env": "^7.1.6",
+        "@babel/preset-react": "^7.0.0",
+        "@stopsopa/validator": "^0.0.102",
+        "babel-loader": "^8.0.4",
+        "css-loader": "^1.0.1",
+        "express": "^4.16.4",
+        "extract-text-webpack-plugin": "^4.0.0-beta.0",
+        "ink": "^2.0.6",
+        "inquirer": "^6.2.2",
+        "inspc": "^0.0.16",
+        "js-yaml": "^3.12.2",
+        "lodash": "^4.17.11",
+        "nlab": "^0.0.47",
+        "postcss-flexbugs-fixes": "^4.1.0",
+        "postcss-loader": "^3.0.0",
+        "react": "^16.8.4",
+        "react-dom": "^16.6.3",
+        "react-router-dom": "^5.0.0",
+        "readline": "^1.3.0",
+        "style-loader": "^0.23.1",
+        "uglifyjs-webpack-plugin": "^2.0.1",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.3.0"
+    },
+    "scripts": {
+        "build": "node node_modules/.bin/webpack",
+        "dev": "node node_modules/.bin/webpack --watch"
+    }
+}
