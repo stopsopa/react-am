@@ -11,9 +11,36 @@ p {
     box-shadow: 0 0 4px black;
     padding: 2px 5px;
 }
+.tmp {
+    font-size: 11px;
+    font-family: monospace;
+    //border: 1px solid gray;
+    position: absolute;
+    background-color: #e65300;
+    box-shadow: 0 0 4px black;
+    padding: 2px 5px;
+}
 .pos {
     border: 1px solid red;
     .test {
+        margin: 10px;
+        padding: 10px;
         border: 5px dashed lightgray;
+    }
+    .shadow {
+        box-shadow: 0 0 4px red !important;
+    }
+    .test2 {
+        .rel {
+            .test {
+                display: inline-block;
+            }
+        }
+    }
+    .rel {
+        position: relative;
+    }
+    .abs {
+        position: absolute;
     }
 }
