@@ -7,76 +7,77 @@ import './Pos.scss';
 
 import manipulation from 'nlab/manipulation';
 
-import cumulativeOffset from '../cumulativeOffset';
+import cumulativeOffset, { CO_PADDING, CO_MARGIN } from '../cumulativeOffset';
 
 class Pos extends Component {
     componentDidMount() {
         const m = document.createElement('div');
         manipulation.append(document.body, m);
         m.classList.add('mouse');
-        document.addEventListener('mousemove', this.event = e => {
+        document.addEventListener('mousemove', this.mousemove = e => {
             m.innerText     = e.clientX + ':' + e.clientY;
             m.style.left    = e.clientX + 20 + 'px';
             m.style.top     = e.clientY + 20 + 'px';
         });
 
-        (() => {
-            let t, m;
-            document.addEventListener('mousedown', this.mousedown = e => {
+        document.addEventListener('mouseover', this.mouseover = e => {
+            target = e.target;
+        });
 
-                t = false;
+        let target;
+        let old;
+        document.addEventListener('keydown', this.keydown = e => {
 
-                if ( ! e.target ) {
+            if (e.key !== 'Shift') {
 
-                    return;
-                }
+                return;
+            }
 
-                t = e.target;
+            if (target) {
 
-                t.classList.add('shadow');
-
-                m = document.createElement('div');
-                manipulation.append(document.body, m);
-                m.classList.add('tmp');
-                const c = cumulativeOffset(t);
+                target.classList.add('shadow');
+                const c = cumulativeOffset(target, CO_MARGIN);
+                old = m.innerText;
                 m.innerText     = c.left + ':' + c.top;
-                m.style.left    = e.clientX + 20 + 'px';
-                m.style.top     = e.clientY + 20 + 'px';
+                m.classList.add('tmp');
+            }
+        });
 
+        document.addEventListener('keyup', this.keyup = e => {
 
-                log(e.shiftKey)
-            });
-            document.addEventListener('mouseup', this.mouseup = e => {
+            if (e.key !== 'Shift') {
 
-                if ( ! t ) {
+                return;
+            }
 
-                    return;
-                }
+            if (target) {
 
-                t.classList.remove('shadow');
-
-                m && manipulation.remove(m);
-                m = false;
-
-            });
-        })();
+                m.innerText = old;
+                target.classList.remove('shadow');
+                m.classList.remove('tmp');
+            }
+        });
 
         this.m = m;
     }
     componentWillUnmount() {
+
         this.m && manipulation.remove(this.m);
         this.m = false;
-        this.event && document.removeEventListener('mousemove', this.event);
-        this.event = false;
-        this.mousedown && document.removeEventListener('mousedown', this.mousedown);
-        this.mousedown = false;
-        this.mouseup && document.removeEventListener('mouseup', this.mouseup);
-        this.mouseup = false;
+
+        function unbind(name, fn) {
+            this[name] && document.removeEventListener(name, fn);
+            this[name] = false;
+        }
+        unbind('mousemove', this.mousemove);
+        unbind('mouseover', this.mouseover);
+        unbind('keydown', this.keydown);
+        unbind('keyup', this.keyup);
     }
     render() {
         return (
             <div className="pos">
-                <p style={{color: 'red'}}>hold 'shift' and click individual elements on the page to see its position</p>
+                <p style={{color: 'red'}}>mouseover any element and click 'shift' button</p>
                 <table width="100%">
                     <tbody>
                     <tr>
