@@ -15,8 +15,8 @@ class Pos extends Component {
         manipulation.append(document.body, m);
         m.classList.add('mouse');
         document.addEventListener('mousemove', this.mousemove = e => {
-            const x = e.clientX + window.scrollX
-            const y = e.clientY + window.scrollY;
+            const x = parseInt(e.clientX + window.scrollX, 10)
+            const y = parseInt(e.clientY + window.scrollY, 10);
             m.innerText     = x + ':' + y;
             m.style.left    = x + 20 + 'px';
             m.style.top     = y + 20 + 'px';
@@ -160,6 +160,10 @@ class Pos extends Component {
                     </tr>
                     </tbody>
                 </table>
+                <div className="test" style={{
+                    top: '24px',
+                    left: '18px',
+                }}>abs in rel, in abs</div>
 
             </div>
         );

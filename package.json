@@ -26,6 +26,7 @@
         "lodash": "^4.17.11",
         "nlab": "^0.0.48",
         "node-sass": "^4.11.0",
+        "normalize.css": "^8.0.1",
         "postcss-flexbugs-fixes": "^4.1.0",
         "postcss-loader": "^3.0.0",
         "react": "^16.8.4",
